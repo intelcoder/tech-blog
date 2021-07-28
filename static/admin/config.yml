@@ -1,5 +1,5 @@
 backend:
-  name: sj-tech-blog
+  name: git-gateway
   repo: intelcoder/tech-blog
 
 media_folder: content/assets
