@@ -5,11 +5,13 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-import SearchPosts from "../components/searchPosts"
+import SearchPosts from "../components/SearchPosts"
+
 
 class Blog extends React.Component {
   render() {
     const { data, navigate, location } = this.props
+
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
     const localSearchBlog = data.localSearchBlog
@@ -17,7 +19,7 @@ class Blog extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
+
         <SearchPosts
           posts={posts}
           localSearchBlog={localSearchBlog}
@@ -56,6 +58,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }

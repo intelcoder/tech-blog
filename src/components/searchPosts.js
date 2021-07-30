@@ -3,8 +3,23 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { useFlexSearch } from "react-use-flexsearch"
 import * as queryString from "query-string"
+import tw from 'twin.macro'
 
 import { rhythm } from "../utils/typography"
+
+const PostWrap = tw.div`mb-4`
+const PostLink = tw(Link)`py-2`
+const PostH3 = styled.h3`
+  ${tw`py-2`};
+  a {
+    ${tw`text-4xl py-2 font-secondary-title`};
+
+  }
+`
+const PostDesc = tw.p`
+  pt-2 leading-5
+`
+
 
 const SearchBar = styled.div`
   display: flex;
@@ -81,23 +96,19 @@ const AllPosts = ({ posts }) => (
     {posts.map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
       return (
-        <div key={node.fields.slug}>
-          <h3
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
+        <PostWrap key={node.fields.slug}>
+          <PostH3>
+            <PostLink style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
               {title}
-            </Link>
-          </h3>
+            </PostLink>
+          </PostH3>
           <small>{node.frontmatter.date}</small>
-          <p
+          <PostDesc
             dangerouslySetInnerHTML={{
               __html: node.frontmatter.description || node.excerpt,
             }}
           />
-        </div>
+        </PostWrap>
       )
     })}
   </div>

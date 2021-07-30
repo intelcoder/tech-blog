@@ -1,11 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
-import Bio from "../components/bio"
+import tw from 'twin.macro'
+import Tag from "../components/Tag"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import MarkdownProvider from "../components/MarkdownProvider"
 import { rhythm, scale } from "../utils/typography"
+
+const BlogPostTitle = tw.h1`text-4xl font-primary  my-2 `
+
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -19,24 +23,28 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
+        <BlogPostTitle>{post.frontmatter.title} 한글도 되나</BlogPostTitle>
+        {/* <p>
           {post.frontmatter.date}
-        </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        </p> */}
+        <MarkdownProvider>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </MarkdownProvider>
+
+        <div className="flex">
+          {
+            post.frontmatter.tags && post.frontmatter.tags.map((tag) => {
+              return <Tag name={tag} />
+            })
+          }
+        </div>
+
         <hr
           style={{
             marginBottom: rhythm(1),
           }}
         />
-        <Bio />
+
 
         <ul
           style={{
@@ -85,6 +93,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }
