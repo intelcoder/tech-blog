@@ -4,23 +4,40 @@ import styled from "styled-components"
 import { useFlexSearch } from "react-use-flexsearch"
 import * as queryString from "query-string"
 import tw from 'twin.macro'
+import Tag from 'components/Tag'
 
 import { rhythm } from "../utils/typography"
 
-const PostWrap = tw.div`mb-4`
+const PostWrap = tw.div`flex mb-8 justify-between flex-col md:flex-row`
 const PostLink = tw(Link)`py-2`
 const PostH3 = styled.h3`
-  ${tw`py-2`};
+  ${tw`pb-2 text-3xl font-primary`};
   a {
     ${tw`text-4xl py-2 font-secondary-title`};
 
   }
-
 `
+
+const PostDate = tw.small``
+const PostPreviewRight = tw.div`w-full pr-4`
+const PostPreviewLeft = styled.div`
+  ${tw` flex flex-row justify-between items-start md:items-end mt-4 md:mt-0
+   md:flex-col items-center
+
+  `};
+  min-width: 120px;
+  small, div {
+    text-align: right;
+  }
+`
+
+
 const PostDesc = tw.p`
   pt-2 leading-5
 `
 
+const PostPreviewWrap = tw.div`flex w-full`
+const PostPreviewInner = tw.div``
 
 const SearchBar = styled.div`
   display: flex;
@@ -67,23 +84,24 @@ const SearchedPosts = ({ results }) =>
       const slug = node.slug
 
       return (
-        <div key={slug}>
-          <h3
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: `none` }} to={`/blog${slug}`}>
-              {title}
-            </Link>
-          </h3>
-          <small>{date}</small>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: description || excerpt,
-            }}
-          />
-        </div>
+        <PostLink style={{ boxShadow: `none` }} to={`/blog${slug}`}>
+          <PostWrap key={slug}>
+            <PostPreviewRight>
+              <h3>
+                {title}
+              </h3>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: description || excerpt,
+                }}
+              />
+            </PostPreviewRight>
+            <PostPreviewLeft>
+              <PostDate>{date}</PostDate>
+            </PostPreviewLeft>
+
+          </PostWrap>
+        </PostLink>
       )
     })
   ) : (
@@ -97,19 +115,26 @@ const AllPosts = ({ posts }) => (
     {posts.map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
       return (
-        <PostWrap key={node.fields.slug}>
-          <PostH3>
-            <PostLink style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
-              {title}
-            </PostLink>
-          </PostH3>
-          <small>{node.frontmatter.date}</small>
-          <PostDesc
-            dangerouslySetInnerHTML={{
-              __html: node.frontmatter.description || node.excerpt,
-            }}
-          />
-        </PostWrap>
+        <PostLink style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
+          <PostWrap key={node.fields.slug}>
+            <PostPreviewRight>
+              <PostH3>
+                {title}
+              </PostH3>
+              <PostDesc
+                dangerouslySetInnerHTML={{
+                  __html: node.frontmatter.description || node.excerpt,
+                }}
+              />
+            </PostPreviewRight>
+            <PostPreviewLeft>
+              <PostDate>{node.frontmatter.date}</PostDate>
+              <div>
+                <Tag name="Category" />
+              </div>
+            </PostPreviewLeft>
+          </PostWrap>
+        </PostLink>
       )
     })}
   </div>
