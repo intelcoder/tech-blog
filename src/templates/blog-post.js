@@ -24,11 +24,11 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
         />
         <BlogPostTitle>{post.frontmatter.title} 한글도 되나</BlogPostTitle>
-        {/* <p>
+        <p>
           {post.frontmatter.date}
-        </p> */}
+        </p>
         <MarkdownProvider>
-          <MDXRenderer>{post.body}</MDXRenderer>
+           <MDXRenderer>{post.body}</MDXRenderer>
         </MarkdownProvider>
 
         <div className="flex">
