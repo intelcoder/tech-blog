@@ -1,9 +1,10 @@
 ---
-path: awesome-images
+path: "갓츠비로 블로그 만드는 방법 알아보기 "
 date: 2020-06-06T01:22:55.506Z
-title: Awesome Images
+title: "갓츠비로 블로그 만드는 방법 알아보기 "
 thumbnail: ../assets/great2.jpg
 description: Fix for gatsby-plugin-mdx and gatsby-remark-images
+category: Javascript
 tags:
   - test
   - image
