@@ -1,11 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-import SearchPosts from "../components/SearchPosts"
+import PostsWithSearch from "../components/PostsWithSearch"
 
 
 class Blog extends React.Component {
@@ -20,7 +19,7 @@ class Blog extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
 
-        <SearchPosts
+        <PostsWithSearch
           posts={posts}
           localSearchBlog={localSearchBlog}
           navigate={navigate}

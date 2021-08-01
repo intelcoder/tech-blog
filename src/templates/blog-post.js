@@ -6,7 +6,7 @@ import Tag from "../components/Tag"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import MarkdownProvider from "../components/MarkdownProvider"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const BlogPostTitle = tw.h1`text-4xl font-primary  my-2 `
 

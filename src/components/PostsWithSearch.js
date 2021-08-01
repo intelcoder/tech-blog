@@ -15,6 +15,7 @@ const PostH3 = styled.h3`
     ${tw`text-4xl py-2 font-secondary-title`};
 
   }
+
 `
 const PostDesc = tw.p`
   pt-2 leading-5
@@ -114,7 +115,7 @@ const AllPosts = ({ posts }) => (
   </div>
 )
 
-const SearchPosts = ({ posts, localSearchBlog, location, navigate }) => {
+const PostsWithSearch = ({ posts, localSearchBlog, location, navigate }) => {
   const { search } = queryString.parse(location.search)
   const [query, setQuery] = useState(search || "")
 
@@ -152,4 +153,4 @@ const SearchPosts = ({ posts, localSearchBlog, location, navigate }) => {
   )
 }
 
-export default SearchPosts
+export default PostsWithSearch
