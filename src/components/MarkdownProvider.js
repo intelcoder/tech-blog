@@ -6,6 +6,7 @@ const P = tw.p`py-3 leading-5`
 const Img = tw.img`my-4`
 const Link = tw.a`leading-5`
 const Code = tw.code`p-1 text-gray-400`
+const Pre = tw.pre`border border-gray-400`
 
 export default function MarkdownProvider({ children }) {
   return (
@@ -21,6 +22,7 @@ export default function MarkdownProvider({ children }) {
         img: Img,
         a: Link,
         code: Code,
+        pre: Pre,
       }}
     >
       {children}

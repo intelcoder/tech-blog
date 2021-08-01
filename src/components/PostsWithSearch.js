@@ -8,13 +8,11 @@ import Tag from 'components/Tag'
 
 import { rhythm } from "../utils/typography"
 
-const PostWrap = tw.div`flex mb-8 justify-between flex-col md:flex-row`
 const PostLink = tw(Link)`py-2`
 const PostH3 = styled.h3`
   ${tw`pb-2 text-3xl font-primary`};
   a {
     ${tw`text-4xl py-2 font-secondary-title`};
-
   }
 `
 
@@ -36,8 +34,11 @@ const PostDesc = tw.p`
   pt-2 leading-5
 `
 
-const PostPreviewWrap = tw.div`flex w-full`
-const PostPreviewInner = tw.div``
+const PostWrap = styled.div`
+  ${tw`flex mb-8 justify-between flex-col md:flex-row`}
+
+`
+
 
 const SearchBar = styled.div`
   display: flex;
@@ -87,10 +88,10 @@ const SearchedPosts = ({ results }) =>
         <PostLink style={{ boxShadow: `none` }} to={`/blog${slug}`}>
           <PostWrap key={slug}>
             <PostPreviewRight>
-              <h3>
+              <PostH3>
                 {title}
-              </h3>
-              <p
+              </PostH3>
+              <PostDesc
                 dangerouslySetInnerHTML={{
                   __html: description || excerpt,
                 }}
@@ -98,6 +99,9 @@ const SearchedPosts = ({ results }) =>
             </PostPreviewRight>
             <PostPreviewLeft>
               <PostDate>{date}</PostDate>
+              <div>
+                <Tag name={node.category} />
+              </div>
             </PostPreviewLeft>
 
           </PostWrap>
@@ -130,7 +134,7 @@ const AllPosts = ({ posts }) => (
             <PostPreviewLeft>
               <PostDate>{node.frontmatter.date}</PostDate>
               <div>
-                <Tag name="Category" />
+                <Tag name={node.frontmatter.category} />
               </div>
             </PostPreviewLeft>
           </PostWrap>

@@ -9,9 +9,9 @@ const TagDiv = styled.div`
   display: inline-block;
 `
 
-const Tag = ({ name, size }) => {
+const Tag = ({ name, className }) => {
   return (
-    <TagDiv>{name}</TagDiv>
+    <TagDiv className={className}>{name}</TagDiv>
   )
 }
 
