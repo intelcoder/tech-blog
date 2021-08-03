@@ -12,13 +12,13 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-postcss`,
     `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-plugin-root-import',

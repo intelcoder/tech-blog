@@ -43,6 +43,7 @@
     "react-switch": "^5.0.0",
     "react-typography": "^0.16.19",
     "react-use-flexsearch": "^0.1.1",
+    "slugify": "^1.6.0",
     "styled-components": "^4.2.0",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",
@@ -55,7 +56,7 @@
     "autoprefixer": "^10.3.1",
     "gatsby-cli": "^2.12.66",
     "gatsby-plugin-emotion": "^6.10.0",
-    "gatsby-plugin-root-import": "^2.0.6",
+    "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "^1.17.0",
     "tailwindcss": "^2.2.7",
     "twin.macro": "^2.6.2"
@@ -72,7 +73,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -p 8002 --inspect",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

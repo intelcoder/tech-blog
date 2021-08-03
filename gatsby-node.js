@@ -1,11 +1,50 @@
 const path = require(`path`)
+const slugify = require('slugify')
+
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  return graphql(
+  // const categoryPost = path
+
+  const postByCategoryComponent = path.resolve(`./src/templates/post-by-category.js`)
+  const blogPostComponent = path.resolve(`./src/templates/blog-post.js`)
+
+  const category = graphql(
+    `
+      {
+        allMdx(filter: { frontmatter: { category:{ ne:null} } }) {
+          nodes {
+            frontmatter {
+              category
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+    const categories = result.data.allMdx.nodes
+
+    categories.forEach((category, index) => {
+
+      createPage({
+        path: `category/${slugify(category.frontmatter.category.toLowerCase())}`,
+        component: postByCategoryComponent,
+        context: {
+          category: category.frontmatter.category,
+        },
+      })
+    })
+
+  })
+
+
+
+  const blogPost = graphql(
     `
       {
         allMdx(
@@ -40,7 +79,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       createPage({
         path: `blog${post.node.fields.slug}`,
-        component: blogPost,
+        component: blogPostComponent,
         context: {
           slug: post.node.fields.slug,
           previous,
@@ -49,8 +88,8 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    return null
   })
+  return Promise.all([category, blogPost])
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
