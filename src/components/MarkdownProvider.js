@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDXProvider } from "@mdx-js/react"
+import { MDXProvider } from '@mdx-js/react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
@@ -10,7 +10,6 @@ const P = styled.p`
     ${tw`bg-white text-black`}
   }
   a {
-    
   }
 `
 const Img = tw.img`my-4`

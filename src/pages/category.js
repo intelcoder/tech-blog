@@ -1,18 +1,11 @@
 import React from 'react'
-import { Link, graphql } from "gatsby"
-
-
+import { Link, graphql } from 'gatsby'
 
 const Category = ({ data, navigate, location }) => {
-
-
   return null
 }
 
-
 export default Category
-
-
 
 export const pageQuery = graphql`
   query {

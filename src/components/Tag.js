@@ -1,19 +1,23 @@
 import React from 'react'
-import styled from "styled-components"
+import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
 import tw from 'twin.macro'
 
-const TagDiv = styled.div`
+const TagA = styled(Link)`
   ${tw`p-2 font-bold text-center`};
   background-color: #eee341;
   color: black;
   display: inline-block;
+  pointer-events: visible;
 `
 
-const Tag = ({ name, className }) => {
+const Tag = ({ name, className, type = 'category' }) => {
+  if (!name) return null
   return (
-    <TagDiv className={className}>{name}</TagDiv>
+    <TagA to={`${type}/${name.toLowerCase()}`} className={className}>
+      {name}
+    </TagA>
   )
 }
-
 
 export default Tag

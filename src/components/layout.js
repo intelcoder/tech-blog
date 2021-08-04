@@ -1,15 +1,14 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from '../utils/typography'
 
 import tw from 'twin.macro'
 
 const H1 = styled.h1`
   ${tw`mb-4 uppercase`};
   a {
-
     ${tw`text-4xl font-primary `}
   }
 `
@@ -42,7 +41,7 @@ class Layout extends React.Component {
           style={{
             fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
-            marginBottom: '12px'
+            marginBottom: '12px',
           }}
         >
           <Link
@@ -71,9 +70,7 @@ class Layout extends React.Component {
           <header>{header}</header>
           <main>{children}</main>
         </div>
-        <Footer>
-
-        </Footer>
+        <Footer></Footer>
       </Wrapper>
     )
   }

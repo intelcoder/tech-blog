@@ -1,18 +1,17 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import tw from 'twin.macro'
-import Tag from "../components/Tag"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import MarkdownProvider from "../components/MarkdownProvider"
-import { rhythm } from "../utils/typography"
+import Tag from '../components/Tag'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import MarkdownProvider from '../components/MarkdownProvider'
+import { rhythm } from '../utils/typography'
 
 const BlogPostTitleH1 = tw.h1`text-4xl font-primary  my-2 `
 const BlogPostTagWrap = tw.div`flex mt-4`
 
 class BlogPostTemplate extends React.Component {
-
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
@@ -25,19 +24,16 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
         />
         <BlogPostTitleH1>{post.frontmatter.title}</BlogPostTitleH1>
-        <p>
-          {post.frontmatter.date}
-        </p>
+        <p>{post.frontmatter.date}</p>
         <MarkdownProvider>
-           <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{post.body}</MDXRenderer>
         </MarkdownProvider>
 
         <BlogPostTagWrap>
-          {
-            post.frontmatter.tags && post.frontmatter.tags.map((tag) => {
+          {post.frontmatter.tags &&
+            post.frontmatter.tags.map(tag => {
               return <Tag name={tag} className="mr-2" />
-            })
-          }
+            })}
         </BlogPostTagWrap>
 
         <hr
@@ -45,7 +41,6 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-
 
         <ul
           style={{

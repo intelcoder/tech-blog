@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { useFlexSearch } from "react-use-flexsearch"
-import * as queryString from "query-string"
+import React, { useState } from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import { useFlexSearch } from 'react-use-flexsearch'
+import * as queryString from 'query-string'
 import tw from 'twin.macro'
 import Tag from 'components/Tag'
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from '../utils/typography'
 
 const PostLink = tw(Link)`py-2`
 const PostH3 = styled.h3`
@@ -24,11 +24,11 @@ const PostPreviewLeft = styled.div`
 
   `};
   min-width: 120px;
-  small, div {
+  small,
+  div {
     text-align: right;
   }
 `
-
 
 const PostDesc = tw.p`
   pt-2 leading-5
@@ -36,9 +36,7 @@ const PostDesc = tw.p`
 
 const PostWrap = styled.div`
   ${tw`flex mb-8 justify-between flex-col md:flex-row`}
-
 `
-
 
 const SearchBar = styled.div`
   display: flex;
@@ -61,8 +59,8 @@ const SearchBar = styled.div`
     display: flex;
     flex: 100%;
     height: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     background-color: transparent;
     border: none;
@@ -88,9 +86,7 @@ const SearchedPosts = ({ results }) =>
         <PostLink style={{ boxShadow: `none` }} to={`/blog${slug}`}>
           <PostWrap key={slug}>
             <PostPreviewRight>
-              <PostH3>
-                {title}
-              </PostH3>
+              <PostH3>{title}</PostH3>
               <PostDesc
                 dangerouslySetInnerHTML={{
                   __html: description || excerpt,
@@ -103,28 +99,25 @@ const SearchedPosts = ({ results }) =>
                 <Tag name={node.category} />
               </div>
             </PostPreviewLeft>
-
           </PostWrap>
         </PostLink>
       )
     })
   ) : (
-    <p style={{ textAlign: "center" }}>
+    <p style={{ textAlign: 'center' }}>
       Sorry, couldn't find any posts matching this search.
     </p>
   )
 
 const AllPosts = ({ posts }) => (
-  <div style={{ margin: "20px 0 40px" }}>
+  <div style={{ margin: '20px 0 40px' }}>
     {posts.map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
       return (
         <PostLink style={{ boxShadow: `none` }} to={`/blog${node.fields.slug}`}>
           <PostWrap key={node.fields.slug}>
             <PostPreviewRight>
-              <PostH3>
-                {title}
-              </PostH3>
+              <PostH3>{title}</PostH3>
               <PostDesc
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
@@ -146,7 +139,7 @@ const AllPosts = ({ posts }) => (
 
 const PostsWithSearch = ({ posts, localSearchBlog, location, navigate }) => {
   const { search } = queryString.parse(location.search)
-  const [query, setQuery] = useState(search || "")
+  const [query, setQuery] = useState(search || '')
 
   const results = useFlexSearch(
     query,
@@ -171,7 +164,7 @@ const PostsWithSearch = ({ posts, localSearchBlog, location, navigate }) => {
           value={query}
           onChange={e => {
             navigate(
-              e.target.value ? `/blog/?search=${e.target.value}` : "/blog/"
+              e.target.value ? `/blog/?search=${e.target.value}` : '/blog/'
             )
             setQuery(e.target.value)
           }}

@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 import tw from 'twin.macro'
 
 const Button = props => (
@@ -17,11 +17,11 @@ const ButtonWrapper = styled.button`
   text-transform: uppercase;
   letter-spacing: 2px;
 
-  background: ${props => props.props.background || "black"};
-  color: ${props => props.props.color || "rgb(255, 255, 255)"};
-  font-size: ${props => props.props.fontSize || "15px"};
-  font-weight: ${props => props.props.fontWeight || "600"};
-  border-radius: ${props => props.props.radius || "6px"};
+  background: ${props => props.props.background || 'black'};
+  color: ${props => props.props.color || 'rgb(255, 255, 255)'};
+  font-size: ${props => props.props.fontSize || '15px'};
+  font-weight: ${props => props.props.fontWeight || '600'};
+  border-radius: ${props => props.props.radius || '6px'};
   margin-top: ${props => props.props.marginTop};
   margin-bottom: ${props => props.props.marginBottom};
 
