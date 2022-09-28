@@ -10,7 +10,11 @@
 }
 
 html, body {
-  background-color: #1b2027;
+  background-color: #1A202C;
+  
+}
+body * {
+ color: #CCD5E0;
 }
 p {
   margin: 0;

@@ -8,7 +8,7 @@ import SEO from '../components/seo'
 import MarkdownProvider from '../components/MarkdownProvider'
 import { rhythm } from '../utils/typography'
 
-const BlogPostTitleH1 = tw.h1`text-4xl font-primary  my-2 `
+const BlogPostTitleH1 = tw.h1`text-4xl font-primary  my-2 font-title-kr`
 const BlogPostTagWrap = tw.div`flex mt-4`
 
 class BlogPostTemplate extends React.Component {

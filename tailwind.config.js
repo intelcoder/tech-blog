@@ -1,12 +1,12 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-
-      'secondary': ['Nanum Gothic'],
+      'title-kr': ['Do Hyeon', 'sans-serif'],
+      secondary: ['Gamja Flower', 'Nanum Gothic'],
       'secondary-title': ['Do Hyeon'],
-      'primary': ['Black Han Sans', 'Arial']
+      primary: ['Black Han Sans', 'Arial'],
     },
     extend: {},
   },

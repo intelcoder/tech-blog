@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 const Category = ({ data, navigate, location }) => {
   return null
