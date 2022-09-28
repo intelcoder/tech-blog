@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   repo: intelcoder/tech-blog
+  branch: master # Branch to update (optional; defaults to master)
 
 media_folder: content/assets
 public_folder: ../assets
