@@ -23,7 +23,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <BlogPostTitleH1>{post.frontmatter.title}</BlogPostTitleH1>
+        <BlogPostTitleH1>{post.frontmatter.title}111</BlogPostTitleH1>
         <p>{post.frontmatter.date}</p>
         <MarkdownProvider>
           <MDXRenderer>{post.body}</MDXRenderer>
