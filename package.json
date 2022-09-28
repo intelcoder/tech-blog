@@ -72,7 +72,7 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider & gatsby build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider gatsby build",
     "develop": "gatsby develop -p 8002 --inspect",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
