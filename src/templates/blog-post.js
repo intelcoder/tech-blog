@@ -10,7 +10,7 @@ import { rhythm } from '../utils/typography'
 import { GiscusComments } from 'src/components/GiscusComments'
 
 const BlogPostTitleH1 = tw.h1`text-4xl font-primary  my-2 font-title-kr`
-const BlogPostTagWrap = tw.div`flex mt-4`
+const BlogPostTagWrap = tw.div`flex mt-4 gap-2`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -33,7 +33,7 @@ class BlogPostTemplate extends React.Component {
         <BlogPostTagWrap>
           {post.frontmatter.tags &&
             post.frontmatter.tags.map(tag => {
-              return <Tag name={tag} className="mr-2" />
+              return <Tag name={tag} />
             })}
         </BlogPostTagWrap>
 

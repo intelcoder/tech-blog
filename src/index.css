@@ -16,7 +16,7 @@ html, body {
 }
 body * {
  color: #CCD5E0;
- font-size: 1.25rem;
+ /* font-size: 1.25rem; */
 }
 p {
   margin: 0;
