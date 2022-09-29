@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import MarkdownProvider from '../components/MarkdownProvider'
 import { rhythm } from '../utils/typography'
+import { GiscusComments } from 'src/components/GiscusComments'
 
 const BlogPostTitleH1 = tw.h1`text-4xl font-primary  my-2 font-title-kr`
 const BlogPostTagWrap = tw.div`flex mt-4`
@@ -23,7 +24,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <BlogPostTitleH1>{post.frontmatter.title}111</BlogPostTitleH1>
+        <BlogPostTitleH1>{post.frontmatter.title}</BlogPostTitleH1>
         <p>{post.frontmatter.date}</p>
         <MarkdownProvider>
           <MDXRenderer>{post.body}</MDXRenderer>
@@ -66,6 +67,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <GiscusComments />
       </Layout>
     )
   }
