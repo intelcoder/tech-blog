@@ -4,19 +4,17 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 const P = styled.p`
-  ${tw`py-3 leading-5`}
+  ${tw`py-3 leading-relaxed text-lg`}
   code {
-    padding: 2px;
-    ${tw`bg-white text-black`}
   }
   a {
   }
 `
 const Img = tw.img`my-4`
-const Link = tw.a`leading-5`
+const Link = tw.a`leading-relaxed text-lg`
 const Code = tw.code`p-1 text-gray-400`
-const Pre = tw.pre`border border-gray-400`
-const H2 = tw.h2`font-secondary`
+const Pre = tw.pre`border border-gray-400 my-4`
+const H2 = tw.h2`font-secondary text-xl font-bold my-4 text-white`
 
 export default function MarkdownProvider({ children }) {
   return (

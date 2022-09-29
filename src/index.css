@@ -11,10 +11,12 @@
 
 html, body {
   background-color: #1A202C;
+  font-size: 16px;
   
 }
 body * {
  color: #CCD5E0;
+ font-size: 1.25rem;
 }
 p {
   margin: 0;
