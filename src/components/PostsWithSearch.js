@@ -10,7 +10,7 @@ import { rhythm } from '../utils/typography'
 
 const PostLink = tw(Link)`py-2`
 const PostH3 = styled.h3`
-  ${tw`pb-2 text-3xl font-primary`};
+  ${tw`pb-2 text-3xl font-primary font-title-kr`};
   a {
     ${tw`text-4xl py-2 font-secondary-title`};
   }
@@ -19,7 +19,7 @@ const PostH3 = styled.h3`
 const PostDate = tw.small``
 const PostPreviewRight = tw.div`w-full pr-4`
 const PostPreviewLeft = styled.div`
-  ${tw` flex flex-row justify-between items-start md:items-end mt-4 md:mt-0
+  ${tw` flex flex-row justify-between items-start md:items-end mt-4 md:mt-0 
    md:flex-col items-center
 
   `};
@@ -31,7 +31,7 @@ const PostPreviewLeft = styled.div`
 `
 
 const PostDesc = tw.p`
-  pt-2 leading-5
+  pt-2 leading-5 
 `
 
 const PostWrap = styled.div`
