@@ -8,16 +8,22 @@ exports.createPages = ({ graphql, actions }) => {
 
   // const categoryPost = path
 
-  const postByCategoryComponent = path.resolve(`./src/templates/post-by-category.js`)
+  const postByCategoryComponent = path.resolve(
+    `src/templates/post-by-category.js`
+  )
   const blogPostComponent = path.resolve(`./src/templates/blog-post.js`)
 
   const category = graphql(
     `
       {
-        allMdx(filter: { frontmatter: { category:{ ne:null} } }) {
+        allMdx(filter: { frontmatter: { category: { ne: null } } }) {
           nodes {
+            id
             frontmatter {
               category
+            }
+            internal {
+              contentFilePath
             }
           }
         }
@@ -30,19 +36,17 @@ exports.createPages = ({ graphql, actions }) => {
     const categories = result.data.allMdx.nodes
 
     categories.forEach((category, index) => {
-
       createPage({
-        path: `category/${slugify(category.frontmatter.category.toLowerCase())}`,
+        path: `category/${slugify(
+          category.frontmatter.category.toLowerCase()
+        )}`,
         component: postByCategoryComponent,
         context: {
           category: category.frontmatter.category,
         },
       })
     })
-
   })
-
-
 
   const blogPost = graphql(
     `
@@ -53,12 +57,16 @@ exports.createPages = ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              id
               fields {
                 slug
               }
               frontmatter {
                 title
                 tags
+              }
+              internal {
+                contentFilePath
               }
             }
           }
@@ -77,9 +85,12 @@ exports.createPages = ({ graphql, actions }) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
 
+      console.log(
+        `${blogPostComponent}?__contentFilePath=${post.node.internal.contentFilePath}`
+      )
       createPage({
         path: `blog${post.node.fields.slug}`,
-        component: blogPostComponent,
+        component: `${blogPostComponent}?__contentFilePath=${post.node.internal.contentFilePath}`,
         context: {
           slug: post.node.fields.slug,
           previous,
@@ -87,7 +98,6 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-
   })
   return Promise.all([category, blogPost])
 }

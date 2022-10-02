@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './normalize.css'
+@import './normalize.css';
 
 * {
-  line-height: 1;
+  line-height: 2rem;
   color: white;
   font-family: 'Nanum Gothic';
 }

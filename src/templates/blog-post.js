@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import tw from 'twin.macro'
 import Tag from '../components/Tag'
 import Layout from '../components/layout'
@@ -26,9 +25,8 @@ class BlogPostTemplate extends React.Component {
         />
         <BlogPostTitleH1>{post.frontmatter.title}</BlogPostTitleH1>
         <p>{post.frontmatter.date}</p>
-        <MarkdownProvider>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </MarkdownProvider>
+
+        <MarkdownProvider>{this.props.children}</MarkdownProvider>
 
         <BlogPostTagWrap>
           {post.frontmatter.tags &&
@@ -75,7 +73,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql`
+export const query = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
@@ -86,7 +84,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      body
+
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

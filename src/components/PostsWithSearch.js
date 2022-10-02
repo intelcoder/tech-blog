@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { useFlexSearch } from 'react-use-flexsearch'
 import * as queryString from 'query-string'
 import tw from 'twin.macro'
 import Tag from 'components/Tag'
@@ -73,42 +72,6 @@ const SearchBar = styled.div`
   }
 `
 
-const SearchedPosts = ({ results }) =>
-  results.length > 0 ? (
-    results.map(node => {
-      const date = node.date
-      const title = node.title || node.slug
-      const description = node.description
-      const excerpt = node.excerpt
-      const slug = node.slug
-
-      return (
-        <PostLink style={{ boxShadow: `none` }} to={`/blog${slug}`}>
-          <PostWrap key={slug}>
-            <PostPreviewRight>
-              <PostH3>{title}</PostH3>
-              <PostDesc
-                dangerouslySetInnerHTML={{
-                  __html: description || excerpt,
-                }}
-              />
-            </PostPreviewRight>
-            <PostPreviewLeft>
-              <PostDate>{date}</PostDate>
-              <div>
-                <Tag name={node.category} />
-              </div>
-            </PostPreviewLeft>
-          </PostWrap>
-        </PostLink>
-      )
-    })
-  ) : (
-    <p style={{ textAlign: 'center' }}>
-      Sorry, couldn't find any posts matching this search.
-    </p>
-  )
-
 const AllPosts = ({ posts }) => (
   <div style={{ margin: '20px 0 40px' }}>
     {posts.map(({ node }) => {
@@ -137,15 +100,9 @@ const AllPosts = ({ posts }) => (
   </div>
 )
 
-const PostsWithSearch = ({ posts, localSearchBlog, location, navigate }) => {
+const PostsWithSearch = ({ posts, location, navigate }) => {
   const { search } = queryString.parse(location.search)
   const [query, setQuery] = useState(search || '')
-
-  const results = useFlexSearch(
-    query,
-    localSearchBlog.index,
-    JSON.parse(localSearchBlog.store)
-  )
 
   return (
     <>
@@ -170,7 +127,7 @@ const PostsWithSearch = ({ posts, localSearchBlog, location, navigate }) => {
           }}
         />
       </SearchBar>
-      {query ? <SearchedPosts results={results} /> : <AllPosts posts={posts} />}
+      <AllPosts posts={posts} />
     </>
   )
 }
