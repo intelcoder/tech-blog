@@ -92,7 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
           slug: post.node.fields.slug,
           previous,
           next,
-          tags: post.node.frontmatter.tags,
+          tags: post.node.frontmatter.tags || [],
         },
       })
     })
