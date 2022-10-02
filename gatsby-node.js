@@ -11,7 +11,7 @@ exports.createPages = ({ graphql, actions }) => {
   const postByCategoryComponent = path.resolve(
     `src/templates/post-by-category.js`
   )
-  const blogPostComponent = path.resolve(`./src/templates/blog-post.js`)
+  const blogPostComponent = path.resolve(`src/templates/blog-post.js`)
 
   const category = graphql(
     `
@@ -85,9 +85,6 @@ exports.createPages = ({ graphql, actions }) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
 
-      console.log(
-        `${blogPostComponent}?__contentFilePath=${post.node.internal.contentFilePath}`
-      )
       createPage({
         path: `blog${post.node.fields.slug}`,
         component: `${blogPostComponent}?__contentFilePath=${post.node.internal.contentFilePath}`,
@@ -95,6 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
           slug: post.node.fields.slug,
           previous,
           next,
+          tags: post.node.frontmatter.tags,
         },
       })
     })

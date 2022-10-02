@@ -90,7 +90,7 @@ const AllPosts = ({ posts }) => (
             <PostPreviewLeft>
               <PostDate>{node.frontmatter.date}</PostDate>
               <div>
-                <Tag name={node.frontmatter.category} />
+                <Tag name={node.frontmatter.category} className="py-0" />
               </div>
             </PostPreviewLeft>
           </PostWrap>

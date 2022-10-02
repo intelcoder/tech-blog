@@ -16,7 +16,7 @@ const Tag = ({ name, className, type = 'category' }) => {
   return (
     <TagA
       to={`${type}/${name.toLowerCase()}`}
-      className={`${className} text-white border-none rounded px-2 py-1`}
+      className={`${className} text-white border-none rounded px-2`}
     >
       {name}
     </TagA>

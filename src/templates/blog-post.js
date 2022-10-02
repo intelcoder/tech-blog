@@ -13,10 +13,12 @@ const BlogPostTagWrap = tw.div`flex mt-4 gap-2`
 
 class BlogPostTemplate extends React.Component {
   render() {
+    console.log(this.props.data)
+    if (!this.props.data) return null
+
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -74,7 +76,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const query = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $tags: [String]) {
     site {
       siteMetadata {
         title
@@ -92,5 +94,27 @@ export const query = graphql`
         tags
       }
     }
+    relatedPosts: allMdx(
+      limit: 4
+      filter: {
+        fields: { slug: { ne: $slug } }
+        frontmatter: { tags: { in: $tags } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+        }
+      }
+    }
   }
 `
+// filter: {
+//   id: { ne: $id }
+//   published_at: { lt: $published_at }
+//   tags: { elemMatch: { slug: { in: $tags } } }
+// }
+// sort: { fields: published_at, order: DESC }
