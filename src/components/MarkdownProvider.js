@@ -12,6 +12,7 @@ const P = styled.p`
   a {
   }
 `
+
 const Img = tw.img`my-4`
 const Link = tw.a`leading-relaxed text-lg`
 // const Code = tw.code`p-1 text-gray-400 text-lg`
