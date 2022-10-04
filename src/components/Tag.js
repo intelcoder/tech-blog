@@ -15,7 +15,7 @@ const Tag = ({ name, className, type = 'category' }) => {
   if (!name) return null
   return (
     <TagA
-      to={`${type}/${name.toLowerCase()}`}
+      to={`/${type}/${name.toLowerCase()}`}
       className={`${className} text-white border-none rounded px-2`}
     >
       {name}

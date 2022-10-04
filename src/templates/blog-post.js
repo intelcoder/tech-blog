@@ -13,12 +13,10 @@ const BlogPostTagWrap = tw.div`flex mt-4 gap-2`
 
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props.data)
-    if (!this.props.data) return null
-
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+    const hasRelatedPosts = !!this.props.data?.relatedPosts.edges?.length
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -32,8 +30,8 @@ class BlogPostTemplate extends React.Component {
 
         <BlogPostTagWrap>
           {post.frontmatter.tags &&
-            post.frontmatter.tags.map(tag => {
-              return <Tag name={tag} />
+            post.frontmatter.tags.map((tag) => {
+              return <Tag name={tag} type="tags" />
             })}
         </BlogPostTagWrap>
 
@@ -43,30 +41,21 @@ class BlogPostTemplate extends React.Component {
           }}
         />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`/blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={`/blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+        {hasRelatedPosts && (
+          <section>
+            <h3 className="text-2xl bold mb-4">관련글</h3>
+            {this.props.data?.relatedPosts.edges?.map((p) => {
+              return (
+                <div>
+                  <Link to={`/blog${post.fields.slug}`}>
+                    {p.frontmatter.title}
+                  </Link>
+                </div>
+              )
+            })}
+          </section>
+        )}
+
         <GiscusComments />
       </Layout>
     )
@@ -86,12 +75,19 @@ export const query = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
         tags
+        thumbnail {
+          childImageSharp {
+            gatsbyImageData(aspectRatio: 1.5)
+          }
+        }
       }
     }
     relatedPosts: allMdx(
@@ -107,14 +103,15 @@ export const query = graphql`
           fields {
             slug
           }
+          frontmatter {
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(aspectRatio: 1.5)
+              }
+            }
+          }
         }
       }
     }
   }
 `
-// filter: {
-//   id: { ne: $id }
-//   published_at: { lt: $published_at }
-//   tags: { elemMatch: { slug: { in: $tags } } }
-// }
-// sort: { fields: published_at, order: DESC }

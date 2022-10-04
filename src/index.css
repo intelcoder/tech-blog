@@ -9,6 +9,9 @@
   color: white;
   font-family: 'Nanum Gothic';
 }
+h1, h2 ,h3, h4 {
+  font-family: 'Nanum Gothic';
+}
 
 html, body {
   background-color: #1A202C;
