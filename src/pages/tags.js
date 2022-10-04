@@ -10,7 +10,7 @@ const Tags = ({ data, location }) => {
   const tagCountLookup = useMemo(() => {
     const tagCountLookup = {}
     data.allMdx.edges.forEach(({ node }) => {
-      node.frontmatter.tags.forEach((tag) => {
+      node.frontmatter?.tags?.forEach((tag) => {
         tagCountLookup[tag] = tagCountLookup[tag] ? tagCountLookup[tag] + 1 : 1
       })
     })
