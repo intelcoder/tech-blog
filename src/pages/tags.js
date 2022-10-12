@@ -27,7 +27,7 @@ const Tags = ({ data, location }) => {
       {data.allMdx.distinct.map((tag, index) => {
         return (
           <div key={index}>
-            <Link to={`/tags/${tag}`}>
+            <Link to={`/tags/${tag.toLowerCase()}`}>
               {tag} ({tagCountLookup[tag]})
             </Link>
           </div>

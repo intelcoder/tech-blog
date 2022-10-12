@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PostsWithSearch from '../components/PostsWithSearch'
+import { PostCard } from 'src/components/PostCard'
 
 class Blog extends React.Component {
   render() {
@@ -11,18 +12,31 @@ class Blog extends React.Component {
 
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
-  
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-
-        <PostsWithSearch
+        <div className="mb-12 md:mb-24 mt-8">
+          React, Javascript, Typescript...
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {posts.map((post) => {
+            const { frontmatter } = post.node
+            return (
+              <PostCard
+                {...frontmatter}
+                slug={post.node.fields.slug}
+                excerpt={post.node.excerpt}
+                image={frontmatter.thumbnail}
+              />
+            )
+          })}
+        </div>
+        {/* <PostsWithSearch
           posts={posts}
-       
           navigate={navigate}
           location={location}
-        />
+        /> */}
       </Layout>
     )
   }
@@ -44,12 +58,18 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
             description
             tags
             category
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(aspectRatio: 1.5)
+              }
+            }
           }
         }
       }

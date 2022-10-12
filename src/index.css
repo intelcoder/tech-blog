@@ -25,6 +25,9 @@ body * {
 p {
   margin: 0;
 }
+a {
+  box-shadow: none;
+}
 
 .gatsby-resp-image-wrapper {
   margin: 24px 0 !important;

@@ -18,10 +18,8 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
+    let header = (
+      <div className="flex justify-between align-center">
         <H1>
           <Link
             style={{
@@ -31,32 +29,17 @@ class Layout extends React.Component {
             }}
             to={location.pathname === blogPath ? `/blog/` : `/`}
           >
-            {title}
+            {'<존버 />'}
           </Link>
         </H1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-            marginBottom: '12px',
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+
+        <div className="flex gap-4">
+          <Link to="/categories">Categories</Link>
+          <Link to="/tags">Tags</Link>
+        </div>
+      </div>
+    )
+
     return (
       <Wrapper>
         <div
