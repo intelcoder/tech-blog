@@ -13,16 +13,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-postcss`,
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        /**
-         * One convention is to place your Netlify CMS customization code in a
-         * `src/cms` directory.
-         */
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -126,7 +117,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map((edge) => {
+              return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
@@ -202,7 +193,7 @@ module.exports = {
             siteMetadata: { siteUrl },
           },
         }) => {
-          return allPages.map((edge) => {
+          return allPages.map(edge => {
             console.log(siteUrl + edge.node.path)
             return { ...edge.node, url: siteUrl + edge.node.path }
           })
