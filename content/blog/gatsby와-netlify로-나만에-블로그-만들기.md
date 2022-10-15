@@ -12,3 +12,5 @@ tags:
   - React
 ---
 Gatsby와 Netlify cms로 블로그를 Tailwind로 만들어 가는 방법을
+
+>  보겠습.아  번 한 대해서 가츠비에
