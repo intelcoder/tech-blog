@@ -107,22 +107,23 @@ collections:
     folder: blog
     create: true
     fields:
-      - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
       - { name: category, label: Category, widget: 'select', options: ["Javascript", "Typescript", "CSS"] }
       - { name: tags, label: Tags,  widget: list }
+      
 ```
 
 editorial_workflow를 추가하면 publish를 하지 않고 저장 기능이 추가 됩니다. 워드프레스, 티스토리 같은 블로드 들도 초안 모드나 비공계 모드를 사용할 수 있는데 editorial_workflow를 통해서 그 기능을 추가 할 수 있습니다.
 
+위에 보이는 collections에 fields는 수정이 가능하며 원하는 만큼 여러 fields를 추가 할 수 있습니다. 
+더 추가적인 widget은 아래 링크를 통해서 확인 할수 있습니다.
 
+[여러 widget 보러가기](https://www.netlifycms.org/docs/widgets/#object)
 
-
-설정이 다 끝났다면 이제 다시 `gatsby develop`을 실행 한뒤 /admin url로 가면 github를 통해서 로그인 하라는 팝업이 뜨고 다음과 같이 블로그 글을 적을 수 있는 어드민 dash보드가 나옵니다.
-
+설정이 다 끝났다면 이제 다시 `gatsby develop`을 실행 한뒤 /admin url로 가면 github를 통해서 로그인 하라는 팝업이 뜨고 다음과 같이 블로그 글을 적을 수 있는 admin dashboard 나옵니다.
 
 ![](../assets/screen-shot-2022-10-16-at-3.47.50-pm.png)
 
