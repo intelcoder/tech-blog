@@ -38,13 +38,21 @@ Gatsby는 꽤 오랫동안 유지 보수되고 있는 프로젝트이고 많은 
 
 프로젝트 셋업 및 사용하는 NPM pakcages 설명
 
-먼저 [gatsby-starter-netlify-cms](https://github.com/netlify-templates/gatsby-starter-netlify-cms) 프로젝트 레포에 가서 Use this template을 클릭해서 가져 옵니다.
+```
+npm install -g gatsby-cli
+```
 
+기본적인 세팅은 cli를 따라서 하면 됩니다. 
 
+우리는 tailwind를 사용할 것이기 때문에 다른 css framework은 사용하지 않도록 하겠습니다.
 
-본인이 원하는 리포 이름을 적고 맨 아래 초록 버튼을 누르면 간단하게 리포가 복사 됩니다.
+gatsby에는 많은 플러그 인들이 있습니다. 일단은 markdown을 기반으로 블로그 글을 작설해서 페이지에 보여주는데 필요한 플러그 인들을 설치해보겠습니다.
 
+```
+yarn add gatsby-plugin-alias-imports gatsby-remark-images gatsby-plugin-mdx slugify reading-time
+```
 
+https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins
 
 블로그 포스트 로컬에서 적어보기
 
