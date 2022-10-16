@@ -84,15 +84,47 @@ Netlify는 github말고도 다른 git provider에 있는 프로젝트도 가져�
 
 이제 다시 홈페이지로 가셔서 현재 프로젝트를 선택하고 사이트 URL을 눌러 보시면 사이트가 웹에 올라 간 것을 볼 수 있습니다.
 
-
-
 이제 netlify에는 사이트를 올렸으니 다음으로는 netlify-cms를 설정해 보겠습니다. 먼저 cms를 사용하려면 admin config.yml를 설정해야 합니다. 
-
-
 
 먼저 프로젝트 root레벨에 static/admin/config.yml를 만들어 줍니다.
 
+```
+backend:
+  # github를 통해서 로그인을 하고 싶다면 github를 이름에 쓰면되고 다른 signup/login을 사용하고 싶으면
+  # name: git-gateway
+  name: github
+  repo: username/gatsby-dev-blog-template
+  branch: main
 
+media_folder: static/assets
+public_folder: /assets
+# draft / in review / ready mode 추가
+publish_mode: editorial_workflow
+
+collections:
+  - name: blog
+    label: Blog
+    folder: blog
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: body, label: Body, widget: markdown }
+      - { name: category, label: Category, widget: 'select', options: ["Javascript", "Typescript", "CSS"] }
+      - { name: tags, label: Tags,  widget: list }
+```
+
+editorial_workflow를 추가하면 publish를 하지 않고 저장 기능이 추가 됩니다. 워드프레스, 티스토리 같은 블로드 들도 초안 모드나 비공계 모드를 사용할 수 있는데 editorial_workflow를 통해서 그 기능을 추가 할 수 있습니다.
+
+
+
+
+설정이 다 끝났다면 이제 다시 `gatsby develop`을 실행 한뒤 /admin url로 가면 github를 통해서 로그인 하라는 팝업이 뜨고 다음과 같이 블로그 글을 적을 수 있는 어드민 dash보드가 나옵니다.
+
+
+![](../assets/screen-shot-2022-10-16-at-3.47.50-pm.png)
 
 마크다운 스타일 정하기
 
