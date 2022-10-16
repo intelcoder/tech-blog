@@ -54,7 +54,33 @@ yarn add gatsby-plugin-alias-imports gatsby-remark-images gatsby-plugin-mdx slug
 
 https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins
 
-블로그 포스트 로컬에서 적어보기
+블로그를 글을 쓰고 관리하는데 netlify-cms를 사용합니다. 일단 코드를 git repo에 올리고 netlify에 배포 시켜보도록 하겠습니다.
+
+```
+git init
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:username/gatsby-dev-blog-template.git
+git push -u origin main
+```
+
+이제 github에 가서 방금 push한 코드가 제대로 push되어 있는지 확인해 봅시다.
+
+그리고 나서 netlify에 로그인을 한뒤 Add new site 버튼을 누른뒤 import an existing project를 선택해 줍니다.
+
+![](../assets/screen-shot-2022-10-16-at-3.01.25-pm.png)
+
+코드를 github에 올렸으니 github를 선택해 줍니다.
+
+![](../assets/screen-shot-2022-10-16-at-3.01.34-pm.png)
+
+만약에 브랜치가 보이지 않는다면 아래 버튼을 눌러서 repo를 선택하거나 모든 repo를 검색 가능하게 변경하면 됩니다.
+
+![](../assets/screen-shot-2022-10-16-at-3.02.07-pm.png)
+
+![](../assets/screen-shot-2022-10-16-at-3.12.14-pm.png)
+
+
 
 마크다운 스타일 정하기
 
