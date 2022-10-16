@@ -24,11 +24,11 @@ tags:
 * Graphql 플레이 그라운드 배워보기
 * 블로그에 코멘트 기능 추가하기
 
-**Gatsby는 무엇인가?**
+## **`Gatsby는 무엇인가?`**
 
 Gatsby는 static page generation을 도와주는 React 기반에 framework입니다. 모든 페이지를 static으로 미리 만들어지기 때문에 페이지 페이지 로딩 속도도 아주 빠릅니다. 데이터는 graphql 기반으로 페이지로 가져오게 됩니다. 많은 cms와 연결해서 사용 할 수 있습니다.
 
-**Netlify는 무엇인가 ?**
+## **Netlify는 무엇인가 ?**
 
 개발팀에 워크플로우를 간편하게 만들어주는 플랫폼입니다. Netlify는 호스팅, 파이프라인, static page 프리뷰 등을 제공 합니다. 또한 netlify는 많은 호스팅 사트에서는 유료 서비스인 SSL certificates을 무료로 제공합니다.(Let's encrypt).
 
@@ -48,7 +48,7 @@ npm install -g gatsby-cli
 
 gatsby에는 많은 플러그 인들이 있습니다. 일단은 markdown을 기반으로 블로그 글을 작설해서 페이지에 보여주는데 필요한 플러그 인들을 설치해보겠습니다.
 
-```
+```javascript
 yarn add gatsby-plugin-alias-imports gatsby-remark-images gatsby-plugin-mdx slugify reading-time
 ```
 
@@ -70,15 +70,27 @@ git push -u origin main
 
 ![](../assets/screen-shot-2022-10-16-at-3.01.25-pm.png)
 
-코드를 github에 올렸으니 github를 선택해 줍니다.
+Netlify는 github말고도 다른 git provider에 있는 프로젝트도 가져올 수 있습니다. 하지만 지금은 github를 사용하고 있으니 github버튼을 눌러서 다음 화면으로 넘어 가겠습니다.
 
 ![](../assets/screen-shot-2022-10-16-at-3.01.34-pm.png)
 
-만약에 브랜치가 보이지 않는다면 아래 버튼을 눌러서 repo를 선택하거나 모든 repo를 검색 가능하게 변경하면 됩니다.
+아마 맨 처음에는 브랜치가 보이지 않을 텐데 검색해서 나오지 않는 다면 설정을 변경해줘야 합니다. 아래 보이는 이미지 처럼 \`Configure the Netlify app on Github\` 버튼을 눌러서 설정을 변경 할 수 있습니다.
 
 ![](../assets/screen-shot-2022-10-16-at-3.02.07-pm.png)
 
+특별히 변경한 것 없이 잘 따라 하고 있으면 아래 설정을 안 바꿔도 됩니다. `Deploy Site` 를 눌러주고 다음으로 넘어 가겠습니다.
+
 ![](../assets/screen-shot-2022-10-16-at-3.12.14-pm.png)
+
+이제 다시 홈페이지로 가셔서 현재 프로젝트를 선택하고 사이트 URL을 눌러 보시면 사이트가 웹에 올라 간 것을 볼 수 있습니다.
+
+
+
+이제 netlify에는 사이트를 올렸으니 다음으로는 netlify-cms를 설정해 보겠습니다. 먼저 cms를 사용하려면 admin config.yml를 설정해야 합니다. 
+
+
+
+먼저 프로젝트 root레벨에 static/admin/config.yml를 만들어 줍니다.
 
 
 
