@@ -118,6 +118,17 @@ collections:
 
 editorial_workflow를 추가하면 publish를 하지 않고 저장 기능이 추가 됩니다. 워드프레스, 티스토리 같은 블로드 들도 초안 모드나 비공계 모드를 사용할 수 있는데 editorial_workflow를 통해서 그 기능을 추가 할 수 있습니다.
 
+블로그 Collection에 카테고리와 태그 추가 하기 
+
+블로그에 보통 카테고리와 태그를 많이 추가 합니다. 유저가 더 쉽게 관련글을 볼수도 있고 SEO에도 도움이 되게 따로 페이지를 만들 수 있기 때문입니다.
+
+카테고리는 아래 처럼 select widget을 사용했습니다. 카테고리를 태그 처럼 엄청 다양할 필요가 없고 잘못 치거나 영어 일때 대문자 소문자 문제도 있기 때문에 select를 사용했고. 태그는 리스트 타입으로 정했습니다. 간단하게 ,로 연결 해서 쓰면 됩니다.
+
+```
+      - { name: category, label: Category, widget: 'select', options: ["Javascript", "Typescript", "CSS"] }
+      - { name: tags, label: Tags,  widget: list }
+```
+
 위에 보이는 collections에 fields는 수정이 가능하며 원하는 만큼 여러 fields를 추가 할 수 있습니다. 
 더 추가적인 widget은 아래 링크를 통해서 확인 할수 있습니다.
 
