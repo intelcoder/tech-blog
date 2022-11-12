@@ -18,6 +18,11 @@ const Link = tw.a`leading-relaxed text-lg`
 // const Code = tw.code`p-1 text-gray-400 text-lg`
 const Pre = tw.pre`border border-gray-400 my-4 text-lg`
 const H2 = tw.h2`font-secondary text-3xl font-bold my-4 text-white`
+const Li = tw.li`mb-0`
+const Ul = tw.ul`mb-0
+list-[square]
+ml-4
+`
 
 export default function MarkdownProvider({ children }) {
   return (
@@ -29,6 +34,8 @@ export default function MarkdownProvider({ children }) {
         code: Code,
         pre: Pre,
         h2: H2,
+        li: Li,
+        ul: Ul,
       }}
     >
       {children}

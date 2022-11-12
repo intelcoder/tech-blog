@@ -16,7 +16,7 @@ const Tags = ({ data, location }) => {
     })
     return tagCountLookup
   }, [data.allMdx.edges])
-
+  
   return (
     <Layout location={location} title={siteTitle}>
       <SEO

@@ -19,9 +19,10 @@ class Blog extends React.Component {
         <div className="mb-12 md:mb-24 mt-8">
           React, Javascript, Typescript...
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {posts.map((post) => {
             const { frontmatter } = post.node
+          
             return (
               <PostCard
                 {...frontmatter}
@@ -32,11 +33,7 @@ class Blog extends React.Component {
             )
           })}
         </div>
-        {/* <PostsWithSearch
-          posts={posts}
-          navigate={navigate}
-          location={location}
-        /> */}
+       
       </Layout>
     )
   }
