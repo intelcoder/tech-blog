@@ -14,32 +14,44 @@ SSH는 Secure Shell Protocal에 약자로 깃허브가 사용자를 쉽게 인�
 
 우리가 만들 ssh-key github에 등록하면서 사용자를 인증 하는 것 입니다. 그리고 커밋을 하면 출처도 기록으로 남기 때문에 필요 합니다.
 
-
-
 먼저 터미널을 열어 봅시다. 저 같은 경우는 iterm2를 사용하고 있습니다.
 
 먼저 ~/.ssh 디렉토리로 가겠습니다.
 
-\`\``
-
+```
 cd ~/.ssh
 
 ssh-keygen -t ed25519 -C "이메일주소@example.com"
-
-\`\``
+```
 
 다음으로는 파일 이름을 정할 수 있습니다.
 
-\`Enter file in which to save the key (/Users/fiddlest/.ssh/id_rsa): intel_rsa\`
+`Enter file in which to save the key (/Users/fiddlest/.ssh/id_rsa): intel_rsa`
 
 아무 것도 입력하지 않으면 id_rsa로 저장됩니다. 하지만 ssh-key가 여러게가 필해서 이름을 변경하고 싶다면 위와 같이 원하는 이름을 입력하면 됩니다.
 
 그리고 다음으로는 passphrase를 입력하면 됩니다. (비밀 번호 라고 생각 하면 됩니다.)
 
-이제 \`ls\`를 입력하면 내 id_rsa 파일이 있는 것을 확인 할 수 있습니다.
+이제 `ls` 를 입력하면 내 id_rsa 파일이 있는 것을 확인 할 수 있습니다.
 
 이제 ssh-key를 github에 등록해야 합니다.
 
-
-
 ## Gihub-Cli 설치하기
+
+brew를 통해서 gh를 설치 해줍니다.
+
+```
+brew install gh
+// 그리고 나서 gh auth login을 입력하면 자동으로 github에 ssh-key가 등록이 됩니다.
+gh auth login
+
+```
+저는 아래와 같이 선택했습니다.
+
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations? SSH
+? Upload your SSH public key to your GitHub account? /Users/...
+? Title for your SSH key: home-mac
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+이제 
