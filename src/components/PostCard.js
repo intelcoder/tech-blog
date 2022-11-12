@@ -13,7 +13,7 @@ export const PostCard = ({
 }) => {
   return (
     <Link to={`/blog${slug}`} className="shadow-none">
-      <GatsbyImage image={getImage(image)} alt={title} className="rounded-lg" />
+      <GatsbyImage image={getImage(image)} alt={title} className="rounded-lg" loading={'eager'} />
       <h3 className="my-2 text-xl">{title} ---</h3>
       <div className="mb-2 text-gray-400 line-clamp-2">{description}</div>
       <div className="flex flex-row justify-between items-center">
