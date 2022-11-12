@@ -6,8 +6,7 @@ thumbnail: ../assets/screenshot-2022-11-10-at-8.39.04-pm.png
 description: 맥 터미널에서 Visual Studio Code를 설치하고 프로젝트를 .code로 여는 방법 입니다.
 category: MacOS
 tags:
-  - Visual Studio
-  - code .
+  - vscode
 ---
 웹 계발을 하는데 요즘에는 필수인 Visual Studio Code를 설치하고 예전에 사용하던 회사 컴퓨터 처럼 . code로 프로젝트를 쉽게 열어 보려고 했습니다. 하지만 . code를 터미널에서 실행하니 아래와 같이 프로젝트가 열리지 않았습니다. 회사 컴퓨터로는 매번 같은 프로젝트를 열어서 자주 사용하지 않았는데 새로운 맥을 세팅 하고 여러가지 하다보니 code .에 필요성을 느낌니다.
 
