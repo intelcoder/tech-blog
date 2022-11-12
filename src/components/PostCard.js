@@ -11,7 +11,6 @@ export const PostCard = ({
   excerpt,
   slug,
 }) => {
-  console.log(slug)
   return (
     <Link to={`/blog${slug}`} className="shadow-none">
       <GatsbyImage image={getImage(image)} alt={title} className="rounded-lg" />

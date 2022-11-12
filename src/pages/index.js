@@ -1,9 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import PostsWithSearch from '../components/PostsWithSearch'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
 import { PostCard } from 'src/components/PostCard'
 
 class Blog extends React.Component {

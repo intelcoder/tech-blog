@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import * as queryString from 'query-string'
@@ -63,9 +63,8 @@ const AllPosts = ({ posts }) => (
   </div>
 )
 
-const PostsWithSearch = ({ posts, location, navigate }) => {
+const PostsWithSearch = ({ posts, location }) => {
   const { search } = queryString.parse(location.search)
-  const [query, setQuery] = useState(search || '')
 
   return (
     <>

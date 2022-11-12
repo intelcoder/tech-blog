@@ -9,7 +9,7 @@ import { PostCard } from 'src/components/PostCard'
 
 class Blog extends React.Component {
   render() {
-    const { data, navigate, location } = this.props
+    const { data } = this.props
 
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges

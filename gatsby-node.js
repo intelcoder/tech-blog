@@ -3,51 +3,15 @@ const slugify = require('slugify')
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+
+const blogPostComponent = path.resolve(`src/templates/blog-post.js`)
+const tagsComponent = path.resolve(`src/templates/tag.js`)
+const postComponent = path.resolve('src/templates/category.js')
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // const categoryPost = path
 
-  const postByCategoryComponent = path.resolve(
-    `src/templates/post-by-category.js`
-  )
-  const blogPostComponent = path.resolve(`src/templates/blog-post.js`)
-  const tagsComponent = path.resolve(`src/templates/tag.js`)
-
-  const category = graphql(
-    `
-      {
-        allMdx(filter: { frontmatter: { category: { ne: null } } }) {
-          nodes {
-            id
-            frontmatter {
-              category
-            }
-            internal {
-              contentFilePath
-            }
-          }
-        }
-      }
-    `
-  ).then((result) => {
-    if (result.errors) {
-      throw result.errors
-    }
-    const categories = result.data.allMdx.nodes
-
-    categories.forEach((category, index) => {
-      createPage({
-        path: `category/${slugify(
-          category.frontmatter.category.toLowerCase()
-        )}`,
-        component: postByCategoryComponent,
-        context: {
-          category: category.frontmatter.category,
-        },
-      })
-    })
-  })
 
   const blogPost = graphql(
     `
@@ -157,6 +121,33 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
   })
+
+  const category = graphql(
+    `
+      {
+        allMdx {
+          distinct(field: frontmatter___category)
+        }
+      }
+    `
+  ).then((result) => {
+    if (result.errors) {
+      throw result.errors
+    }
+
+    // Create blog posts pages.
+    const categories = result.data.allMdx.distinct
+    categories.forEach(category => {
+      createPage({
+        path: `categories/${category}`,
+        component: postComponent,
+        context: {
+          category,
+        },
+      })
+    })
+  })
+
   return Promise.all([category, blogPost, tags])
 }
 
